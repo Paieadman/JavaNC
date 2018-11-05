@@ -66,5 +66,20 @@ public class Employee {
         return this.salary;
     }
 
+    public int hashCode() {
+        int result = 17;
+        result = 31* result + id;
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + salary;
+        return result;
+    }
 
+    public boolean equals(Employee emp){
+        if(emp.hashCode() == this.hashCode())
+        {return true;}
+        else{
+            return false;
+        }
+    }
 }

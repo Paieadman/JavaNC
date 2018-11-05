@@ -29,9 +29,9 @@ public class MyTriangle {
     }
 
     public String getType(){
-        double o1 = v1.distance(v2);
-        double o2 = v1.distance(v3);
-        double o3 = v3.distance(v2);
+        int o1 = (int) (1000*v1.distance(v2));
+        int o2 = (int) (1000*v1.distance(v3));
+        int o3 = (int) (1000*v3.distance(v2));
 
         if(o1==o2 && o2 == o3 && o3 == o1){
             return "Equilaterial";
@@ -44,6 +44,22 @@ public class MyTriangle {
             {
                 return "Scalene";
             }
+        }
+    }
+
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + v1.hashCode();
+        result = 31 * result + v2.hashCode();
+        result = 31 * result + v3.hashCode();
+        return result;
+    }
+
+    public boolean equals(MyTriangle mt){
+        if(mt.hashCode() == this.hashCode())
+        {return true;}
+        else{
+            return false;
         }
     }
 }

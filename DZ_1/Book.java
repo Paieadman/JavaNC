@@ -67,5 +67,21 @@ public class Book {
         return  str;
     }
 
+    public int hashCode() {
+        int result = 17;
+        result = result*31 + name.hashCode();
+        result = 31 * result + Arrays.hashCode(authors);
+        result = 31*result+ (int)(Double.doubleToLongBits(price)^(Double.doubleToLongBits(price))>>32);
+        result = 31*result + qty;
+        return result;
+    }
+
+    public boolean equals(Book book){
+        if(book.hashCode() == this.hashCode())
+        {return true;}
+        else{
+            return false;
+        }
+    }
 
 }

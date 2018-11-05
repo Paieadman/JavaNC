@@ -41,4 +41,20 @@ public class Author {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + (int)gender;
+        result = 31 * result + email.hashCode();
+        return result;
+    }
+
+    public boolean equals(Author aut){
+        if(aut.hashCode() == this.hashCode())
+        {return true;}
+        else{
+            return false;
+        }
+    }
 }

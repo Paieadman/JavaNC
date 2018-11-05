@@ -39,4 +39,20 @@ public class Rectangle {
     public String toString(){
         return "Rectangle[ length = "+ this.length+ ", width = "+ this.width+"]";
     }
+
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + Float.floatToIntBits(length);
+        result = 31 * result + Float.floatToIntBits(width);
+        return result;
+    }
+
+    public boolean equals(Rectangle rec){
+        if(rec.hashCode() == this.hashCode())
+        {return true;}
+        else{
+            return false;
+        }
+    }
+
 }

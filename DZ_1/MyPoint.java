@@ -59,4 +59,18 @@ public class MyPoint {
     public double distance(){
         return distance(0,0);
     }
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + x;
+        result = 31 * result + y;
+        return result;
+    }
+
+    public boolean equals(MyPoint pt){
+        if(pt.hashCode() == this.hashCode())
+        {return true;}
+        else{
+            return false;
+        }
+    }
 }
