@@ -64,4 +64,21 @@ public class Container {
         str+= "]";
         return str;
     }
+
+    public int hashCode(){
+        int result = 17;
+        result = result*31+ x1;
+        result = result*31+ x2;
+        result = result*31+ y1;
+        result = result*31+ y2;
+        return  result;
+    }
+
+    public boolean equals(Container container){
+        if(container.hashCode() == this.hashCode()){
+            return true;
+        } else{
+            return  false;
+        }
+    }
 }

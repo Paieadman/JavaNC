@@ -76,4 +76,24 @@ public class Ball {
     public float getyDelta() {
         return yDelta;
     }
+
+
+
+    public int hashCode(){
+        int result = 17;
+        result = result*31+ Float.floatToIntBits(x);
+        result = result*31+ Float.floatToIntBits(y);
+        result = result*31+ radius;
+        result = result*31+ Float.floatToIntBits(xDelta);
+        result = result*31+ Float.floatToIntBits(yDelta);
+        return  result;
+    }
+
+    public boolean equals(Ball ball){
+        if(ball.hashCode() == this.hashCode()){
+            return true;
+        } else{
+            return  false;
+        }
+    }
 }

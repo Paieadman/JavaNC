@@ -59,9 +59,6 @@ public class MyComplex {
         return ((this.real == real)&&(this.imag == imag));
     }
 
-    public boolean equals(MyComplex another){
-        return equals(another.getReal(), another.getImag());
-    }
 
     public double magnitude(){
         return Math.sqrt(this.real*this.real + this.imag*this.imag);
@@ -102,6 +99,27 @@ public class MyComplex {
 
     public MyComplex conjugate(){
         return (new MyComplex(this.real, (-1)*this.imag));
+    }
+
+    private  int doubleHash(double value){
+        int result = 17;
+        result = 31* result + (int)(Double.doubleToLongBits(value)^(Double.doubleToLongBits(value)>>> 32));
+        return  result;
+    }
+
+    public int hashCode(){
+        int result = 17;
+            result += doubleHash(real);
+        result =31*result+ doubleHash(imag);
+        return  result;
+    }
+
+    public boolean equals(MyComplex comp){
+        if(comp.hashCode() == this.hashCode()){
+            return true;
+        } else{
+            return  false;
+        }
     }
 
 }

@@ -66,4 +66,26 @@ public class MyPolynomial {
         }
         return new MyPolynomial(poly);
     }
+
+    private  int doubleHash(double value){
+        int result = 17;
+        result = 31* result + (int)(Double.doubleToLongBits(value)^(Double.doubleToLongBits(value)>>> 32));
+        return  result;
+    }
+
+    public int hashCode(){
+        int result = 17;
+        for (double i : coeffs){
+            result += doubleHash(i);
+        }
+        return  result;
+    }
+
+    public boolean equals(MyPolynomial poly){
+        if(poly.hashCode() == this.hashCode()){
+            return true;
+        } else{
+            return  false;
+        }
+    }
 }
